@@ -35,4 +35,7 @@ sudo apt install medusa
 
 # 3. Instalação do enum4linux
 sudo apt install enum4linux
+
+# 4. Instalação do nmap
+sudo apt install nmap
 ```
