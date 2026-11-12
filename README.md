@@ -39,3 +39,41 @@ sudo apt install enum4linux
 # 4. Instalação do nmap
 sudo apt install nmap
 ```
+## Host-only
+<img width="701" height="289" alt="acedab06-5f84-4a2a-ad8e-c419042e4dee" src="https://github.com/user-attachments/assets/7e0a61e1-00d3-4f94-be72-cc1ced373c7a" />
+
+Após você configurar nas duas maquinas como está na imagem, você terá que configurar o endereço IPv4 nas duas máquinas como na próxima imagem, para que possam se comunicar.
+
+```bash
+sudo ip addr add 192.168.0.10/24 dev eth0 #Endereço da maquina alvo
+
+sudo ip addr add 192.168.0.11/24 dev eth0 #Endereço do Kali
+```
+
+Na sua máquina Kali Linux, teste a comunicação usando o ping no IP alvo.
+```bash
+ping -c 192.168.0.10
+```
+
+<img width="858" height="379" alt="e8699394-cea8-4cc5-be85-c07f197b70c1" src="https://github.com/user-attachments/assets/a7cb44e2-4d22-4489-86e8-647811b38d97" />
+
+Após se certificar que a comunicação entre as 2 máquinas, faremos uma varredura da maquina alvo, normalmente não faremos scans muito agressivos, mas nesse caso estamos em um laboratório protegido sem nenhum escopo ou vigilância impedindo.
+Usaremos o nmap para fazer uma varredura de portas,serviços e protocolos do alvo.
+
+## NMAP
+
+Aqui vai um resumo da ferramenta nmap, caso já saiba da ferramenta pode passar.
+
+O Nmap (Network Mapper) é um utilitário livre e de código aberto, focado em descoberta de redes, auditoria de segurança e inventário de sistemas.
+Ele funciona como uma ferramenta de pacotes e protocolos que buscam trazer o máximo de informações possíveis, mas o controle depende unicamente do conhecimento do Operador, atuando em um nível bastante próximo aos pacotes e protocolos de rede (TCP, UDP, ICMP, ARP), manipulando cabeçalhos e analisando as respostas cruas que os sistemas devolvem.
+
+Digite com esses parâmetros:
+
+```bash
+nmap -sV -O 192.168.0.10
+```
+Essa é a visão que você deverá ter:
+
+<img width="910" height="612" alt="2aabb971-743c-45f8-86c6-15c30bbda7e1" src="https://github.com/user-attachments/assets/b3661f88-c765-4f45-81ad-761f5afe580b" />
+
+mais informações: [https://nmap.org/man/pt_BR/index.html](https://nmap.org/man/pt_BR/index.html)
