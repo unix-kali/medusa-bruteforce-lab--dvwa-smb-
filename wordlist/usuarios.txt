@@ -1,0 +1,12 @@
+admin
+suporte_ti
+root
+ana.silva
+carlos.mendes
+mariana.costa
+lucas.ferreira
+msfadmin
+beatriz.lima
+convidado
+estagiario01
+backup_svc
