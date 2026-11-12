@@ -77,3 +77,24 @@ Essa é a visão que você deverá ter:
 <img width="910" height="612" alt="2aabb971-743c-45f8-86c6-15c30bbda7e1" src="https://github.com/user-attachments/assets/b3661f88-c765-4f45-81ad-761f5afe580b" />
 
 mais informações: [https://nmap.org/man/pt_BR/index.html](https://nmap.org/man/pt_BR/index.html)
+
+## Enum4linux
+
+Também precisamos ver se conseguimos saber quem são os usuários, isso irá melhorar a precisão do nosso ataque, utilizaremos o "Enum4linux" Essa ferramenta automatiza a extração de informações de sistemas Windows e Samba (Linux) usando exatamente o protocolo SMB (que pode ser vista no comando do nmap com protocolo Netbios-ssn 139).
+
+-Explicação rápida:
+(Netbios-ssn É um protocolo de sessão legado (criado nos anos 80) que permitia que computadores se encontrassem por nomes (ex: PC-SALA) e abrissem uma sessão de comunicação.)
+
+```bash
+enum4linux -a 192.168.0.10  #Caso sua maquina esteja com esse ip.
+```
+Seu objetivo é encontrar essa parte das informações do sistema:
+<img width="907" height="647" alt="ed96a835-42fb-42ac-949d-1c58f46144a3" src="https://github.com/user-attachments/assets/b7a25a68-b247-4b6d-ae3b-27714863cdab" />
+
+Nesse repositório criei a minha própria word-list, usando alguns usuários desse grupo, se sinta a vontade caso queira criar o seu próprio.
+
+## Exploração
+
+A partir de agora, o que deverá ser feito depende de seu objetivo, o nosso aqui será explorar a porta aberta 21 protocolo FTP(File Transfer Protocol), responsável pelo serviço de envio de arquivos inteiros pela internet... ao acessar a porta 21
+
+
