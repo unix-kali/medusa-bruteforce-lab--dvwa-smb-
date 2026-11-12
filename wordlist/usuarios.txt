@@ -10,3 +10,5 @@ beatriz.lima
 convidado
 estagiario01
 backup_svc
+man
+news
