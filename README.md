@@ -59,8 +59,8 @@ ping -c 192.168.0.10
 
 - ## FTP
 Protocolo de Transferência de Arquivos).
-Após se certificar que a comunicação entre as 2 máquinas, faremos uma varredura da maquina alvo, normalmente não faremos scans muito agressivos, mas nesse caso estamos em um laboratório protegido sem nenhum escopo ou vigilância impedindo.
-Usaremos o nmap para fazer uma varredura de portas,serviços e protocolos do alvo.
+Após se certificar que a comunicação entre as 2 máquinas, faremos uma varredura da maquina alvo, normalmente não faremos scans muito agressivos, mas nesse caso estamos em um laboratório protegido legalmente sem nenhum escopo ou vigilância impedindo.
+Usaremos o nmap para fazer uma varredura de portas, serviços e protocolos do alvo.
 
 ### nmap
 
@@ -147,7 +147,23 @@ Então usei de hint proposital que o próprio DVWA exibe no html, uma informaç�
 
 <img width="1151" height="713" alt="Captura de tela de 2026-11-13 02-37-32" src="https://github.com/user-attachments/assets/4369b8db-f431-4269-826a-b10757ff3e9e" />
 
+## Mitigação
 
-- ## referencia
+- **Credenciais padrão expostas:** trocar o usuário/senha padrão (`admin`/`password`) imediatamente após a instalação, e nunca exibir hints de credenciais em ambiente de produção.
+- **Brute force (login.php):** implementar limite de tentativas por IP/usuário (rate limiting), bloqueio temporário após N tentativas falhas, CAPTCHA, e autenticação multifator (MFA).
+- **SMB:** desabilitar usuários/compartilhamentos não utilizados, aplicar política de senha forte, e restringir acesso SMB via firewall/VLAN para a rede interna apenas.
 
-[medusa](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgHpNc_URL2XE-6Jq1Z7Ya7ATo1KB819-fjBcnymgHpQ&s)
+## Tentativa adicional (não concluída)
+
+Tentei automatizar a extração do token CSRF via script Python (`requests` + regex/BeautifulSoup),
+renovando o token a cada tentativa de login. A abordagem é documentada em PoCs públicos (ver Referências),
+mas não cheguei a validar uma execução bem-sucedida no meu ambiente antes de encontrar a vulnerabilidade
+de credenciais padrão, que resolveu o objetivo do desafio por outro caminho.
+
+## Referências
+
+- [Medusa - Documentação oficial](http://foofus.net/projects/medusa/)
+- [DVWA - Damn Vulnerable Web Application](https://github.com/digininja/DVWA)
+- [g0tmi1k - DVWA Login Brute Force com CSRF](https://github.com/g0tmi1k/boot2root-scripts/blob/master/dvwa-login-bruteforce-http-post-csrf.py)
+- [CWE-521: Weak Password Requirements](https://cwe.mitre.org/data/definitions/521.html)
+- [CWE-798: Use of Hard-coded Credentials](https://cwe.mitre.org/data/definitions/798.html)
