@@ -141,7 +141,7 @@ DVWA é um domínio feito no Metasploitable 2, um ambiente vulnerável e legalme
 
 <img width="923" height="626" alt="Captura de tela de 2026-11-12 20-02-03" src="https://github.com/user-attachments/assets/cd0bf065-69d2-4c3b-8746-804d385217d3" />
 
-Aqui devo passar um aviso importante, não podemos usar o medusa de forma convencional com (-M http), a web desse sistema possui um redirecionamento do protocolo http para "http-post-form" , mas o modulo (http) não lida bem com redirecionamentos HTTP (302) ele não segue o redirect automaticamente, e por padrão avalia sucesso/falha comparando o conteúdo da resposta com uma string que você define (ex: “FAIL” ou “Login failed”). Se o DVWA responde com 302 tanto no login certo quanto no errado (ou se a sessão/cookie muda a cada tentativa), o Medusa perde a referência e os resultados saem inconsistentes ou todos “falham”/”passam” igual.
+Aqui devo passar um aviso importante, não podemos usar o medusa de forma convencional com (-M http), a web desse sistema possui um redirecionamento 302 http-post-form, algo que a ferramenta medusa com o modulo padrão (-M http) só é capaz com requisições GET
 
 Então usei de hint proposital que o próprio DVWA exibe no html, uma informação publica e intencional.
 
@@ -152,13 +152,6 @@ Então usei de hint proposital que o próprio DVWA exibe no html, uma informaç�
 - **Credenciais padrão expostas:** trocar o usuário/senha padrão (`admin`/`password`) imediatamente após a instalação, e nunca exibir hints de credenciais em ambiente de produção.
 - **Brute force (login.php):** implementar limite de tentativas por IP/usuário (rate limiting), bloqueio temporário após N tentativas falhas, CAPTCHA, e autenticação multifator (MFA).
 - **SMB:** desabilitar usuários/compartilhamentos não utilizados, aplicar política de senha forte, e restringir acesso SMB via firewall/VLAN para a rede interna apenas.
-
-## Tentativa adicional (não concluída)
-
-Tentei automatizar a extração do token CSRF via script Python (`requests` + regex/BeautifulSoup),
-renovando o token a cada tentativa de login. A abordagem é documentada em PoCs públicos (ver Referências),
-mas não cheguei a validar uma execução bem-sucedida no meu ambiente antes de encontrar a vulnerabilidade
-de credenciais padrão, que resolveu o objetivo do desafio por outro caminho.
 
 ## Referências
 
