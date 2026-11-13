@@ -58,7 +58,7 @@ ping -c 192.168.0.10
 <img width="858" height="379" alt="e8699394-cea8-4cc5-be85-c07f197b70c1" src="https://github.com/user-attachments/assets/a7cb44e2-4d22-4489-86e8-647811b38d97" />
 
 - ## FTP
-  Protocolo de Transferência de Arquivos).
+Protocolo de Transferência de Arquivos).
 Após se certificar que a comunicação entre as 2 máquinas, faremos uma varredura da maquina alvo, normalmente não faremos scans muito agressivos, mas nesse caso estamos em um laboratório protegido sem nenhum escopo ou vigilância impedindo.
 Usaremos o nmap para fazer uma varredura de portas,serviços e protocolos do alvo.
 
