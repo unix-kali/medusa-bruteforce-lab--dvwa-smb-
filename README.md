@@ -143,6 +143,11 @@ DVWA é um domínio feito no Metasploitable 2, um ambiente vulnerável e legalme
 
 Aqui devo passar um aviso importante, não podemos usar o medusa de forma convencional com (-M http), a web desse sistema possui um redirecionamento do protocolo http para "http-post-form" , mas o modulo (http) não lida bem com redirecionamentos HTTP (302) ele não segue o redirect automaticamente, e por padrão avalia sucesso/falha comparando o conteúdo da resposta com uma string que você define (ex: “FAIL” ou “Login failed”). Se o DVWA responde com 302 tanto no login certo quanto no errado (ou se a sessão/cookie muda a cada tentativa), o Medusa perde a referência e os resultados saem inconsistentes ou todos “falham”/”passam” igual.
 
+Então usei de hint proposital que o próprio DVWA exibe no html, uma informação publica e intencional.
+
+<img width="1151" height="713" alt="Captura de tela de 2026-11-13 02-37-32" src="https://github.com/user-attachments/assets/4369b8db-f431-4269-826a-b10757ff3e9e" />
+
+
 - ## referencia
 
 [medusa](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgHpNc_URL2XE-6Jq1Z7Ya7ATo1KB819-fjBcnymgHpQ&s)
